@@ -5,7 +5,6 @@ namespace app\libs\database;
  * Singleton que devuelve una conexión a la base de datos.
  * @author Ing. Rasjido jose
  */
-
 final class Connection {
     private static $connection = null;
 
