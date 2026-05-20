@@ -1,13 +1,14 @@
 <?php
 
-namespace app\core\models\dao\dto;
+namespace app\core\models\dto;
+
+use app\core\models\enums\UserProfile;
+use app\libs\password\Password;
 
 final class UserDto{
 
     private string $apellido, $nombres, $cuenta, $perfil, $clave, $correo, $fechaAlta;
     private int $id, $estado, $resetPass;
-    
-    //Faltaria validar: enumerados, correos.
 
     public function __construct(array $data = [])
     {
@@ -95,20 +96,47 @@ final class UserDto{
     }
 
     public function setPerfil(string $perfil): void{
-        $perfilTrimeado = trim($perfil);
-        $this->perfil = (strlen($perfilTrimeado) > 0 && strlen($perfilTrimeado) <= 45) ? $perfilTrimeado : "";
+        $perfilesValidos = array_column(UserProfile::cases(), "value"); // ['Administrador', 'Operador']
+        $this->perfil =  in_array($perfil, $perfilesValidos) ? $perfil : "";
     }
 
     public function setClave(string $clave): void{
-        $this->clave = (strlen($clave) > 0 && strlen($clave) <= 255) ? $clave : "";
+        $this->clave = (strlen($clave) > 0 && strlen($clave) <= 20) ? Password::hash($clave) : "";
     }
 
     public function setCorreo(string $correo): void{
-        $this->correo = (strlen($correo) > 0 && strlen($correo) <= 255) ? $correo : "";
+        $correoValidado = filter_var($correo, FILTER_VALIDATE_EMAIL);
+        $this->correo = $correoValidado ? $correo : "";
     }
 
     public function setFechaAlta(string $fechaAlta): void{
         $this->fechaAlta = (strlen($fechaAlta) === 10) ? $fechaAlta : "";
+    }
+
+    public function toArray(){
+        return [
+            'id'        => $this->getId(),
+            'apellido'  => $this->getApellido(),
+            'nombres'   => $this->getNombres(),
+            'cuenta'    => $this->getCuenta(),
+            'perfil'    => $this->getPerfil(),
+            'clave'     => $this->getClave(),
+            'correo'    => $this->getCorreo(),
+            'estado'    => $this->getEstado(),
+            'fechaAlta' => $this->getFechaAlta(),
+            'resetPass' => $this->getResetPass()
+        ];
+    }
+
+    public function toArrayForSave(){
+        return [
+            'apellido'  => $this->getApellido(),
+            'nombres'   => $this->getNombres(),
+            'cuenta'    => $this->getCuenta(),
+            'perfil'    => $this->getPerfil(),
+            'clave'     => $this->getClave(),
+            'correo'    => $this->getCorreo()
+        ];
     }
 
 }

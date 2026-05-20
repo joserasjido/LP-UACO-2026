@@ -7,15 +7,19 @@ require_once '../app/core/models/dao/base/BaseDao.php';
 require_once '../app/core/models/dao/UserDao.php';
 require_once '../app/core/models/enums/UserProfile.php';
 
+use app\core\models\dao\UserDao;
+use app\core\models\enums\UserProfile;
+
 try{
-    $dao = new app\core\models\dao\UserDao(app\libs\database\Connection::get());
+    $dao = new UserDao(app\libs\database\Connection::get());
     $dao->save([
-        'apellido'  => 'Perea',
-        'nombres'   => 'Leando Daniel',
-        'cuenta'    => 'leando.perea',
-        'perfil'    => app\core\models\enums\UserProfile::ADMINISTRADOR->value,
+        'apellido'  => 'Fernandez',
+        'nombres'   => 'Miguel',
+        'cuenta'    => 'miguel.fernandez',
+        // 'perfil'    => UserProfile::ADMINISTRADOR->value,
+        'perfil'    => 'Vendedor',
         'clave'     => 'miclave123',
-        'correo'    => 'perea@prueba.com'
+        'correo'    => 'miguel@prueba.com'
         ]);
     echo 'Usuario registrado con éxito';
 }
