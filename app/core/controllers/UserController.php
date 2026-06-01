@@ -2,6 +2,9 @@
 
 namespace app\core\controllers;
 
+use app\libs\http\Request;
+use app\libs\http\Response;
+
 class UserController{
     
     public function __construct()

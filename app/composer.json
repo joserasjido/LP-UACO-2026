@@ -1,0 +1,16 @@
+{
+    "name": "jose/app",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "app\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Jose Rasjido",
+            "email": "jrasjido@gmail.com"
+        }
+    ],
+    "require": {}
+}
