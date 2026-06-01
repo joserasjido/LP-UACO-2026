@@ -16,7 +16,7 @@ class UserController{
     }
 
     public function create(Request $request, Response $response){
-
+        echo 'mostrando vista para crear';
     }
 
     public function save(Request $request, Response $response){
