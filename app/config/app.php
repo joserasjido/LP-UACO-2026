@@ -31,3 +31,27 @@ const APP_DEFAULT_ACTION = "index";
 const APP_AUTHENTICATION_CONTROLLER = "authentication";
 const APP_LOGIN_ACTION = "login";
 const APP_LOGOUT_ACTION = "logout";
+
+//#########################################
+// TOKEN DE VALIDACION INTERNO
+//#########################################
+
+const APP_TOKEN = '$2y$10$YKfOXUtphkqkMcZJm93pg.2Bh0tnofpo3czmxOHEGxuSTBW.xg7Bi';
+
+//#########################################
+// MANEJO DE SESIONES
+//#########################################
+
+const SESSION_FINISHED = 0;
+const SESSION_PASSWORD_CHANGE = 1;
+const SESSION_NOT_AUTHORIZED = 2;
+const SESSION_OUT_OF_TIME = 3;
+const SESSION_DISABLED_ACCOUNT = 4;
+const SESSION_CONTROLLER_WITHOUT_PRIVILEGES = 5;
+const SESSION_MENSAJES = array(
+    0 => "¡Sesión finalizada!",
+    1 => "¡Su clave fue cambiada!",
+    2 => "¡Acceso no autorizado!",
+    3 => "¡Acceso fuera de horario!",
+    4 => "¡Su cuenta ha sido desactivada!",
+    5 => "¡Su cuenta no tiene permisos para acceder al módulo!");

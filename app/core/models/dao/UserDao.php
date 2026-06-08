@@ -24,6 +24,24 @@ final class UserDao extends BaseDao implements InterfaceDao{
         $stmt->execute($data);
     }
 
+    public function login(string $cuenta): array{
+        $sql = "SELECT user.id, user.apellido, user.nombres, user.cuenta, user.clave, user.perfil, user.estado, user.resetPass";
+        $sql .= " FROM usuarios AS user";
+        $sql .= " WHERE (cuenta = :cuenta OR correo = :cuenta)";
+        $result = $this->selectQuery($sql, ["cuenta" => $cuenta]);
+        if(count($result) != 1){
+            throw new \Exception("El nombre de usuario o la contraseña no coinciden");
+        }
+        return $result[0];
+    }
+
+    public function updatePassword(array $data): void{
+        $sql = "UPDATE {$this->table}";
+        $sql .= " SET clave =:clave";
+        $sql .= " WHERE id = :id";
+        $this->updateQuery($sql, $data);
+    }
+
     public function update(array $data): void{
 
     }

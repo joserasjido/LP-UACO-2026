@@ -11,12 +11,12 @@ use app\core\models\enums\UserProfile;
 try{
     $service = new UserService();
     $dto = new UserDto([
-        'apellido'  => 'Lorenzetti',
-        'nombres'   => 'Marcos',
-        'cuenta'    => 'marcos.lorenzetti',
+        'apellido'  => 'Rasjido',
+        'nombres'   => 'Jose',
+        'cuenta'    => 'jose.rasjido',
         'perfil'    => UserProfile::ADMINISTRADOR->value,
-        'clave'     => 'miclave999',
-        'correo'    => 'marcos.lorenzetti@prueba.com'
+        'clave'     => 'jose.rasjido',
+        'correo'    => 'jrasjido@gmail.com'
         ]);
     $service->save($dto);
     echo 'Usuario registrado con éxito';
