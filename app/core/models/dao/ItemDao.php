@@ -33,7 +33,8 @@ final class ItemDao extends BaseDao implements InterfaceDao{
     }
 
     public function list(array $filters): array{
-        return [];
+        $sql = "SELECT id, nombre, codigo, descripcion, precio, stock FROM {$this->table}";
+        return $this->selectQuery($sql, []);
     }
 
     private function validateCodigo(int $id, string $codigo): void{

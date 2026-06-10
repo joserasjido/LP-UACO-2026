@@ -16,6 +16,7 @@ class ItemController extends BaseController{
     }
 
     public function index(Request $request, Response $response){
+        array_push($this->modules, "app/js/item/index.js");
         $this->setCurrentView($request);
         require_once(APP_FILE_TEMPLATE);
     }
@@ -49,7 +50,10 @@ class ItemController extends BaseController{
     }
 
     public function list(Request $request, Response $response){
-        
+        $service = new ItemService();
+        $result = $service->list($request->getDataFromInput());
+        $response->setData($result);
+        $response->send();
     }
     
     public function suggestive(Request $request, Response $response){

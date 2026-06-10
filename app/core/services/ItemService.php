@@ -17,7 +17,11 @@ final class ItemService extends BaseService{
     public function save(ItemDto $dto): void{
         $this->validate($dto);
         $this->dao->save($dto->toArrayForSave());
-    } 
+    }
+
+    public function list(array $filters): array{
+        return $this->dao->list($filters);
+    }
 
     private function validate(ItemDto $dto): void{
         if($dto->getNombre() == ""){

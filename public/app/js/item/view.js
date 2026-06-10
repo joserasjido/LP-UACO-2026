@@ -3,5 +3,9 @@ export const view = {
     init: () => {
         view.forms.item = document.forms['formAlta']
     },
-    resetForm: () => {}
+    resetForm: () => {},
+    listItems: items => {
+        console.log(items);
+        alert("pasar los items a la tabla");
+    }
 };

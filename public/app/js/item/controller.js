@@ -12,7 +12,9 @@ export const controller = {
         data.precio = parseFloat(data.precio);
         service.save(data);
     },
-    list: () => {
-        console.table(service.list());
+    list: async () => {
+        let filters = {};
+        let items = await service.list(filters);
+        view.listItems(items);
     }
 };
