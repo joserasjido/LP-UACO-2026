@@ -1,15 +1,29 @@
-const items = [
-    {id: 1, nombre: 'Coca Cola 3L', codigo: 'cod0001', descripcion: 'Coca cola 3 Litros', categoriaId: 4, precio: 3200, stock: 100},
-    {id: 2, nombre: 'Pepsi 3L', codigo: 'cod0001', descripcion: 'Pepsi 3 Litros', categoriaId: 4, precio: 3200, stock: 100},
-    {id: 3, nombre: 'Sprite 3L', codigo: 'cod0001', descripcion: 'Sprite 3 Litros', categoriaId: 4, precio: 3200, stock: 100}
-];
-
 export const service = {
     load: id => {
         return items.find(item => item.id === id);
     },
     save: item => {
-        items.push(item);
+        fetch('item/save', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            body: JSON.stringify(item)
+        })
+        .then(response => {
+            if (response.ok) return response.json();
+            throw new Error(response, response.status);
+        })
+        .then(data => { 
+            if(data.success){
+                alert(data.message);
+            }
+            else {
+                alert(data.message);
+            }
+        })
+        .catch(error => { console.error("Ha ocurrido un error", error); });
     },
     list: () => {
         return items;

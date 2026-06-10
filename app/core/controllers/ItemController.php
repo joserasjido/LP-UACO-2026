@@ -53,7 +53,10 @@ class ItemController extends BaseController{
     }
     
     public function suggestive(Request $request, Response $response){
-
+        // $service = new MaterialService($request->getController());
+        // $data = $service->suggestive($request->getDataFromInput());
+        // $response->setResult($data);
+        // $response->send();
     }
 
 }

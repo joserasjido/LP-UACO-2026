@@ -1,7 +1,7 @@
 export const view = {
     forms: {},
     init: () => {
-        view.forms.item = document.forms['formItem']
+        view.forms.item = document.forms['formAlta']
     },
     resetForm: () => {}
 };

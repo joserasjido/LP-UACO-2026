@@ -40,4 +40,15 @@ final class ItemService extends BaseService{
         }
     }
 
+    public function suggestive(array $filters): array{
+        // if(!isset($filters["valueToSearch"])){
+        //     throw new \Exception("Se requiere el filtro <strong>valueToSearch</strong> para realizar búsquedas <strong>sugestivas</strong>");
+        // }
+        // return [
+        //     "records" => $this->dao->suggestive($filters),
+        //     "foundedRecords" => $this->dao->foundRows()
+        // ];
+        return [];
+    }
+
 }
